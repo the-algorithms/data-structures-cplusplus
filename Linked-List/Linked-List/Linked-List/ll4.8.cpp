@@ -1,21 +1,19 @@
+//
+//  jade.cpp
+//  Linked-List
+//
+//  Created by Parvez Kose on 11/7/17.
+//  Copyright © 2017 Parvez Kose. All rights reserved.
+//
+
 // 4.8 Building a Sorted Linked List
 //
 // The insertion of a new node in its proper position in the list is delegated to
 // the function addInPlace. This function returns a pointer to the top of the modified list.
-//
-//
 
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct node
-{
-    int num;
-    struct node *next;
-} Node, *NodePtr;
+#include "header.h"
 
-int main()
-{
-    void printList(NodePtr);
+void Program3() {
     NodePtr addInPlace(NodePtr, int);
     int n;
     NodePtr top = NULL;
@@ -28,7 +26,8 @@ int main()
             n = 0;
     }
     printList(top);
-} //end main
+}
+
 NodePtr addInPlace(NodePtr top, int n)
 {
     // This functions inserts n in its ordered position in a (possibly empty)
@@ -50,19 +49,4 @@ NodePtr addInPlace(NodePtr top, int n)
     np->next = curr;
     prev->next = np;
     return top; //the top of the list has not changed
-} //end addInPlace
-NodePtr makeNode(int n)
-{
-    NodePtr np = (NodePtr)malloc(sizeof(Node));
-    np->num = n;
-    np->next = NULL;
-    return np;
-} // end makeNode
-void printList(NodePtr np)
-{
-    while (np != NULL)
-    { // as long as there's a node
-        printf("%d\n", np->num);
-        np = np->next; // go on to the next node
-    }
-} //end printList
+}
