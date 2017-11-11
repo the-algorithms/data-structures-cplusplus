@@ -19,9 +19,11 @@ typedef struct node {
     struct node *next;
 } Node, *NodePtr;
 
+
 NodePtr makeNode(int);
 void printList(NodePtr);
 
+// Create a New Node
 NodePtr makeNode(int n) {
     NodePtr np = (NodePtr) malloc(sizeof (Node));
     np -> num = n;
@@ -29,12 +31,46 @@ NodePtr makeNode(int n) {
     return np;
 }
 
+// Get Random Digits
+int getRandomNum() {
+    return rand() % 10 + 1;
+}
+
+// Generate a new Node Linked List
+NodePtr CreateNodeList(int size) {
+    int num;
+    NodePtr np, top, last;
+    top = nullptr;
+    last = nullptr;
+    
+    for (int i=0; i<size; i++) {
+        num = getRandomNum();
+
+        np = makeNode(num);
+        
+        if ( top == nullptr) {
+            
+            top = np;
+            last = np;
+            
+        } else {
+        
+            last -> next = np;
+            last = np;
+
+        }
+    }
+    return top;
+}
+
+// Print List numbers
 void printList(NodePtr np) {
     while (np != nullptr) {  // as long as there's a node
         cout <<  np -> num;
-        cout << " " << endl;
+        cout << ", ";
         np = np -> next;  // go on to the next node
     }
+     cout << endl;
 }
 
 #endif /* header_h */
