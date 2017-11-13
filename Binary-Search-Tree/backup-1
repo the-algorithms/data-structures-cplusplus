@@ -1,27 +1,32 @@
-/* Binary Tree */
-
-#include <iostream>
+/* Deleting a node from Binary search tree */
+#include<iostream>
 #include <deque>
+#include <climits>
+#include <vector>
+
 using namespace std;
 
 struct Node {
     int data;
     Node* left;
     Node* right;
-    Node* parent;
 };
 
 // Basic Operations
-Node* Insert(Node*, int);
-Node* DeleteNode(Node*, int);
-bool Search(Node*, int);
+    Node* Insert(Node*, char);
+    Node* DeleteNode(Node*, int data);
+    bool Search(Node*, int);
 
 
 // Traversals
 void visit(Node*);
-void preOrder(Node*);
+void preOrder(Node* root);
 void inOrder(Node*);
 void postOrder(Node*);
+
+// Find Min/Max
+int FindMinAll(Node*);
+int FindMinAll(Node*);
 
 // More Operations
 int size(Node*);
@@ -30,80 +35,98 @@ int FindHeight(Node*);
 Node* FindMin(Node*);
 Node* FindMax(Node*);
 
-
-int maxValue(Node*);
-
 int MaxDepth(Node*);
 int MinDepth(Node*);
 
-void BreadthFirstTraversal(Node*);
+struct Tree
+{
+    char data;
+    Tree *left;
+    Tree *right;
+    Tree *parent;
+};
+
+/* Breadth first traversal using queue */
+void BreadthFirstTraversal(Node* root)
+{
+    if (root == NULL) return;
+
+    deque <Tree *> queue;
+    queue.push_back(root);
+    
+    while (!queue.empty()) {
+        Tree *p = queue.front();
+        cout << p->data << " ";
+        queue.pop_front();
+        
+        if (p->left != NULL)
+            queue.push_back(p->left);
+        if (p->right != NULL)
+            queue.push_back(p->right);
+    }
+    cout << endl;
+}
+
+
 
 // main
 int main (){
     
-    char charArr[] = {5, 10, 3, 4, 1, 11, 22};
+    char charArr[] = {5, 10, 3, 4, 1, 11};
     Node* root = NULL;
     
-    for (int i=0; i<strlen(charArr); i++) {
+    for (int i=0; i<strlen(charArr)-1; i++) {
         root = Insert(root, charArr[i]);
     };
-    
-    cout << "MAX: " << maxValue(root) << endl;
     
     //Delete
     //root = DeleteNode(root, 10);
     
     /*int num = 1;
-     while (num != 0) {
-     cout << "Enter number to search: ";
-     cin >> num;
-     if(Search(root, num) == true) cout << "FOUND!!\n" << endl;
-     else cout << "NOT FOUND..\n" <<  endl;
-     }
-     
-     cout << "**Total Nodes**: " << size(root) << endl;
-     cout << "\n";
-     //Print Nodes in Pre Order
-     cout<<"The Pre-Order Traversal: ";
-     preOrder(root);
-     cout<<"\n";
-     
-     //Print Nodes in In Order
-     cout<<"The In-Order Traversal: ";
-     inOrder(root);
-     cout << endl;
-     
-     //Print Nodes in Post Order
-     cout<<"The Post-Order Traversal: ";
-     postOrder(root);
-     cout << endl;
-     
-     /* Traversing level-order.
-     We visit every node on a level before going to a lower level.
-     This is also called Breadth-first traversal.*/
-    /*
-     cout << "printing with Breadth-first traversal" << endl;
-     BreadthFirstTraversal(root);
-     
-     Node* temp1 = FindMin(root);
-     cout << "Min Value: " << temp1 -> data << endl;
-     
-     Node* temp2 = FindMax(root);
-     cout << "Max Value: " << temp2 -> data << endl;
-     
-     cout << "Root: " << root -> data << endl;
-     cout << "Height of BT " << FindHeight(root) << endl;
-     
-     cout << "BT MAX DEPTH " << MaxDepth(root) << endl;
-     cout << "BT MIN DEPTH " << MinDepth(root) << endl;
-     cout << "printing with Breadth-first traversal" << endl;
-     
-     cout<<"\n";
-     */
+    while (num != 0) {
+        cout << "Enter number to search: ";
+        cin >> num;
+        if(Search(root, num) == true) cout << "FOUND!!\n" << endl;
+        else cout << "NOT FOUND..\n" <<  endl;
+    }*/
+    
+    cout << "**Total Nodes**: " << size(root) << endl;
+    cout << "\n";
+    //Print Nodes in Pre Order
+    cout<<"The Pre-Order Traversal: ";
+    preOrder(root);
+    cout<<"\n";
+    
+    //Print Nodes in In Order
+    cout<<"The In-Order Traversal: ";
+    inOrder(root);
+    cout << endl;
+    
+    //Print Nodes in Post Order
+    cout<<"The Post-Order Traversal: ";
+    postOrder(root);
+    cout << endl;
+    
+
+    Node* temp1 = FindMin(root);
+    cout << "Min Value: " << temp1 -> data << endl;
+    
+    Node* temp2 = FindMax(root);
+    cout << "Max Value: " << temp2 -> data << endl;
+    
+    cout << "Root: " << root -> data << endl;
+    cout << "Height of BT " << FindHeight(root) << endl;
+    
+    cout << "BT MAX DEPTH " << MaxDepth(root) << endl;
+    cout << "BT MIN DEPTH " << MinDepth(root) << endl;
+    cout << "printing with Breadth-first traversal" << endl;
+    BreadthFirstTraversal(root);
+
+    cout<<"\n";
     return 0;
 }
 
-Node* Insert(Node* root, int data) {
+Node* Insert(Node* root, char data) {
     if(root == NULL){
         root = new Node();
         root->data = data;
@@ -118,7 +141,7 @@ Node* Insert(Node* root, int data) {
 }
 
 Node* DeleteNode(Node* root, int data) {
-    
+   
     if (root == NULL) return root;
     else if (data < root->data) root->left = DeleteNode(root->left, data);
     else if (data > root->data) root->right = DeleteNode(root->right, data);
@@ -154,7 +177,6 @@ Node* DeleteNode(Node* root, int data) {
     return root;
 }
 
-
 // Look up
 bool Search(Node* root, int data){
     if(root == NULL) return false;
@@ -165,27 +187,6 @@ bool Search(Node* root, int data){
     else
         return Search(root->right, data);
 }
-
-/* Breadth first traversal using queue */
-void BreadthFirstTraversal(Node* root)
-{
-    if (root == NULL) return;
-    deque <Node*> queue;
-    queue.push_back(root);
-    
-    while (!queue.empty()) {
-        Node* p = queue.front();
-        cout << p->data << " ";
-        queue.pop_front();
-        
-        if (p->left != NULL)
-            queue.push_back(p->left);
-        if (p->right != NULL)
-            queue.push_back(p->right);
-    }
-    cout << endl;
-}
-
 
 // Minimum Node / Value
 Node* FindMin(Node* root){
@@ -200,9 +201,6 @@ Node* FindMax(Node* root){
         root = root->right;
     return root;
 }
-
-// Iterative - Returns maximum valu
-
 
 // Counting
 int size(Node* root) {
@@ -259,8 +257,8 @@ int MaxDepth(Node* root){
     if(root == NULL || (root->left == NULL && root->right == NULL))
         return 0;
     
-    int LeftDepth = MaxDepth(root->left); // Left subtree
-    int RightDepth = MaxDepth(root->right); // Right subtree
+    int LeftDepth = MaxDepth(root->left);
+    int RightDepth = MaxDepth(root->right);
     
     return (LeftDepth > RightDepth) ? LeftDepth + 1 : RightDepth + 1;
 }

@@ -47,7 +47,7 @@ int main (){
     for (int i=0; i<strlen(charArr); i++) {
         root = Insert(root, charArr[i]);
     };
-    
+
     cout << "MAX: " << maxValue(root) << endl;
     
     //Delete
@@ -60,46 +60,46 @@ int main (){
      if(Search(root, num) == true) cout << "FOUND!!\n" << endl;
      else cout << "NOT FOUND..\n" <<  endl;
      }
-     
-     cout << "**Total Nodes**: " << size(root) << endl;
-     cout << "\n";
-     //Print Nodes in Pre Order
-     cout<<"The Pre-Order Traversal: ";
-     preOrder(root);
-     cout<<"\n";
-     
-     //Print Nodes in In Order
-     cout<<"The In-Order Traversal: ";
-     inOrder(root);
-     cout << endl;
-     
-     //Print Nodes in Post Order
-     cout<<"The Post-Order Traversal: ";
-     postOrder(root);
-     cout << endl;
-     
-     /* Traversing level-order.
+    
+    cout << "**Total Nodes**: " << size(root) << endl;
+    cout << "\n";
+    //Print Nodes in Pre Order
+    cout<<"The Pre-Order Traversal: ";
+    preOrder(root);
+    cout<<"\n";
+    
+    //Print Nodes in In Order
+    cout<<"The In-Order Traversal: ";
+    inOrder(root);
+    cout << endl;
+    
+    //Print Nodes in Post Order
+    cout<<"The Post-Order Traversal: ";
+    postOrder(root);
+    cout << endl;
+    
+    /* Traversing level-order.
      We visit every node on a level before going to a lower level.
      This is also called Breadth-first traversal.*/
     /*
-     cout << "printing with Breadth-first traversal" << endl;
-     BreadthFirstTraversal(root);
-     
-     Node* temp1 = FindMin(root);
-     cout << "Min Value: " << temp1 -> data << endl;
-     
-     Node* temp2 = FindMax(root);
-     cout << "Max Value: " << temp2 -> data << endl;
-     
-     cout << "Root: " << root -> data << endl;
-     cout << "Height of BT " << FindHeight(root) << endl;
-     
-     cout << "BT MAX DEPTH " << MaxDepth(root) << endl;
-     cout << "BT MIN DEPTH " << MinDepth(root) << endl;
-     cout << "printing with Breadth-first traversal" << endl;
-     
-     cout<<"\n";
-     */
+    cout << "printing with Breadth-first traversal" << endl;
+    BreadthFirstTraversal(root);
+    
+    Node* temp1 = FindMin(root);
+    cout << "Min Value: " << temp1 -> data << endl;
+    
+    Node* temp2 = FindMax(root);
+    cout << "Max Value: " << temp2 -> data << endl;
+    
+    cout << "Root: " << root -> data << endl;
+    cout << "Height of BT " << FindHeight(root) << endl;
+    
+    cout << "BT MAX DEPTH " << MaxDepth(root) << endl;
+    cout << "BT MIN DEPTH " << MinDepth(root) << endl;
+    cout << "printing with Breadth-first traversal" << endl;
+    
+    cout<<"\n";
+    */
     return 0;
 }
 
