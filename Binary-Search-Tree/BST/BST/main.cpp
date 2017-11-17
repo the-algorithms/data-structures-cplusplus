@@ -8,7 +8,6 @@ struct Node {
     int data;
     Node* left;
     Node* right;
-    Node* parent;
 };
 
 // Basic Operations
@@ -48,12 +47,16 @@ int main (){
         root = Insert(root, charArr[i]);
     };
     
-    cout << "MAX: " << maxValue(root) << endl;
+    //cout << "MAX: " << maxValue(root) << endl;
+    
+    cout << "**Total Nodes**: " << size(root) << endl;
+    cout << "\n";
     
     //Delete
     //root = DeleteNode(root, 10);
     
-    /*int num = 1;
+    /*
+     int num = 1;
      while (num != 0) {
      cout << "Enter number to search: ";
      cin >> num;
@@ -61,20 +64,19 @@ int main (){
      else cout << "NOT FOUND..\n" <<  endl;
      }
      
-     cout << "**Total Nodes**: " << size(root) << endl;
-     cout << "\n";
+     
      //Print Nodes in Pre Order
-     cout<<"The Pre-Order Traversal: ";
+     cout << "The Pre-Order Traversal: ";
      preOrder(root);
      cout<<"\n";
-     
+     */
      //Print Nodes in In Order
-     cout<<"The In-Order Traversal: ";
+     cout << "The In-Order Traversal: ";
      inOrder(root);
      cout << endl;
-     
+     /*
      //Print Nodes in Post Order
-     cout<<"The Post-Order Traversal: ";
+     cout << "The Post-Order Traversal: ";
      postOrder(root);
      cout << endl;
      
