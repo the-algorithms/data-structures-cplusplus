@@ -1,7 +1,7 @@
 ## Data Structures & Algorithms
 Concepts in data structures and algorithms using C and C++
 
-![ScreenShot](./data_structures_and_algorithms/assets/pexels-photo-262488.jpg)
+![ScreenShot](./assets/pexels-photo-262488.jpg)
 
 
 
