@@ -1,2 +1,2 @@
-# Data Structure
-### Core Concepts in data structure using C and C++
+## Data Structure
+Core Concepts in data structures and algorithms using C and C++
