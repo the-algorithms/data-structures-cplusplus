@@ -5,7 +5,7 @@ Concepts in data structures and algorithms using C and C++
 ![ScreenShot](./assets/pexels-photo-262488-2.jpg)
 </center>
 
-### Contents
+##### Contents
 
 ### Linked List Problems
 | Problem | Solution |
