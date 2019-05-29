@@ -1,4 +1,4 @@
-## Data Structures & Algorithms
+## Data Structures
 Concepts in data structures using C++
 
 ![ScreenShot](./assets/pexels-photo-262488-2.jpg)
